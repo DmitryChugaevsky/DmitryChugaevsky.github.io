@@ -5,7 +5,7 @@
  * Date: 03.12.2017
  * Time: 20:37
  */
-require 'Calculator.php';
+require 'Plus.php';
 
 class PlusTest extends PHPUnit_Framework_TestCase
 {
