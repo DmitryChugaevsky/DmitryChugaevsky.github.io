@@ -1,0 +1,83 @@
+    <html>
+    <head>
+<title>JQuery проба Chee</title>
+<style type="text/css">
+#back{
+    position:absolute;
+     left:0;
+      top:0;
+       z-index:9000;
+        background-color:#000;
+         display:none;
+    }
+#boxes a{
+    color: #E71818;
+     text-decoration: none;
+}
+#boxes .window{
+    position:absolute;
+     left:0;
+      top:0;
+       display:none;
+         z-index:99999;
+           padding:20px;
+           text-align: center;
+         font-size: 25px;
+         border-radius: 6px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    }
+#boxes #dialog{
+    width:400px;
+    height:300px;
+    padding:10px;
+    background-color:#9b9211;
+    }
+.close{
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    }
+     </style>
+<meta charset="utf-8">
+<script src="jquery.js"></script>
+<script>
+$(document).ready(function() {
+        $('a[name=modal]').click(function(e) {
+            e.preventDefault();
+            var id = $(this).attr('href');
+            var backHeight = $(document).height();
+            var backWidth = $(window).width();
+            $('#back').css({'width':backWidth,'height':backHeight});
+            $('#back').fadeIn(300);
+            $('#back').fadeTo(300,0.8);
+            var winH = $(window).height();
+            var winW = $(window).width();
+            $(id).css('top',  winH/2-$(id).height()/2);
+            $(id).css('left', winW/2-$(id).width()/2);
+            $(id).fadeIn(300);
+        });
+        $('.window .close').click(function (e) {
+            e.preventDefault();
+            $('#back, .window').hide();
+        });
+        $('#back').click(function () {
+            $(this).hide();
+            $('.window').hide();
+        });
+    });
+</script>
+</head>
+<body>
+<a href="#dialog" name="modal">DevIT</a>
+<div id="boxes">
+    <div id="dialog" class="window">
+    <h3>DevIT (JQUERY)</h3>
+    <p>Вы попали туда куда надо </p>
+    <span><a href="#" class="close">Покинуть окно</a>
+    </span></div>
+    <div id="back"></div>
+</div>
+
+   	 </body>
+
+</html>
